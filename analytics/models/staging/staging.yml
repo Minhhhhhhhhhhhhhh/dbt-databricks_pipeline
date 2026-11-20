@@ -1,0 +1,43 @@
+models:
+  - name: stg_job_postings
+    description: "This model transforms the raw job postings data into a staging table."
+    columns:
+      - name: job_id
+        description: "The unique identifier for each job posting."
+      - name: job_title
+        description: "The title of the job posting."
+      - name: company_name
+        description: "The name of the company posting the job."
+      - name: job_location
+        description: "The location of the job posting."
+      - name: job_via
+        description: "The platform or source through which the job was found."
+      - name: job_posted_at
+        description: "The date when the job was posted."
+      - name: job_salary
+        description: "The salary or salary range listed for the job."
+      - name: job_schedule_type
+        description: "The schedule type of the job, such as full-time or part-time."
+      - name: job_work_from_home
+        description: "Whether the job posting indicates remote or work-from-home availability."
+      - name: job_extensions_raw
+        description: "Raw additional job information extracted from the posting."
+      - name: job_detected_extensions_raw
+        description: "Raw detected extensions associated with the job posting."
+      - name: search_time
+        description: "The time when the job posting was retrieved."
+      - name: search_date
+        description: "The date when the job posting was retrieved."
+      - name: search_term
+        description: "The search term used to find the job posting."
+      - name: search_location
+        description: "The location used in the job search."
+  - name: stg_job_skills
+    description: "This model transforms the raw job skills data into a staging table."
+    columns:
+      - name: job_id
+        description: "The unique identifier for each job posting."
+      - name: skill_id
+        description: "The unique identifier for each skill."
+      - name: skill_keyword
+        description: "The keyword or term associated with the skill."
