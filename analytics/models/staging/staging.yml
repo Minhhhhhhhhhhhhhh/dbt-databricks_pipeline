@@ -20,10 +20,6 @@ models:
         description: "The schedule type of the job, such as full-time or part-time."
       - name: job_work_from_home
         description: "Whether the job posting indicates remote or work-from-home availability."
-      - name: job_extensions_raw
-        description: "Raw additional job information extracted from the posting."
-      - name: job_detected_extensions_raw
-        description: "Raw detected extensions associated with the job posting."
       - name: search_time
         description: "The time when the job posting was retrieved."
       - name: search_date
@@ -32,6 +28,14 @@ models:
         description: "The search term used to find the job posting."
       - name: search_location
         description: "The location used in the job search."
+      - name: has_dental_insurance
+        description: "Indicates whether the job posting mentions dental insurance."
+      - name: has_health_insurance
+        description: "Indicates whether the job posting mentions health insurance."
+      - name: has_paid_time_off
+        description: "Indicates whether the job posting mentions paid time off." 
+      - name: has_no_degree_mentioned
+        description: "Indicates whether the job posting mentions that no degree is required."
   - name: stg_job_skills
     description: "This model transforms the raw job skills data into a staging table."
     columns:
