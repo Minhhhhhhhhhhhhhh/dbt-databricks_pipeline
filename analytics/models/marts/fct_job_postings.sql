@@ -23,3 +23,4 @@ SELECT
     has_no_degree_mentioned
 
 FROM job_postings
+qualify row_number() over (partition by job_id order by search_date desc) = 1

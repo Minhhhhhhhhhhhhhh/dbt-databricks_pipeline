@@ -4,6 +4,9 @@ models:
     columns:
       - name: job_id
         description: "The unique identifier for each job posting."
+        data_tests:
+          - not_null
+          - unique
       - name: job_title
         description: "The title of the job posting."
       - name: company_name
@@ -18,8 +21,12 @@ models:
         description: "The raw text salary or salary range listed for the job."
       - name: salary_min
         description: "The minimum salary listed for the job."
+        data_tests:
+          - non_negative
       - name: salary_max
         description: "The maximum salary listed for the job."
+        data_tests:
+          - non_negative
       - name: salary_avg
         description: "The average salary calculated from the minimum and maximum salary."
       - name: salary_currency
@@ -28,6 +35,12 @@ models:
         description: "The period for which the salary is specified (e.g., per year, per month, per hour)."
       - name: job_schedule_type
         description: "The schedule type of the job, such as full-time or part-time."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["Full-time", "Part-time", "Contractor", "Internship"]
+                config:
+                  severity: warn
       - name: job_work_from_home
         description: "Whether the job posting indicates remote or work-from-home availability."
       - name: search_time
@@ -36,6 +49,10 @@ models:
         description: "The date when the job posting was retrieved."
       - name: search_term
         description: "The search term used to find the job posting."
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["Data Engineer", "Data Scientist", "Data Analyst"]
       - name: search_location
         description: "The location used in the job search."
       - name: has_dental_insurance

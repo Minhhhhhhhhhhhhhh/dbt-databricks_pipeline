@@ -12,6 +12,7 @@ with source as
     *
     FROM {{ source('jobs', 'raw_job_postings') }}
     where error is not TRUE
+    and job_id is not null
 )
 
 , parsed as (
@@ -21,8 +22,7 @@ with source as
     from source
 )
 
-, cleaned as 
-(
+, cleaned as (
     select 
         job_id,
         job_title,
@@ -57,3 +57,4 @@ with source as
 select 
     *
 from cleaned
+qualify row_number() over (partition by job_id order by search_date desc) = 1
