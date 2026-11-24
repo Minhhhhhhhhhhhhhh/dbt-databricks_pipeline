@@ -41,7 +41,7 @@ with source as
         array_contains(
             job_extensions,
             "{{ keyword }}"
-        ) as has_{{ keyword | replace(" ", "_") | lower }}
+        ) as has_{{ slugify(keyword) }}
         {{ ", " if not loop.last }}
         {% endfor %}
     from parsed
