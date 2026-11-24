@@ -72,3 +72,21 @@ models:
         description: "The unique identifier for each skill."
       - name: skill_keyword
         description: "The keyword or term associated with the skill."
+
+unit_tests:
+  - name: test_rare_salary_range
+    model: stg_job_postings
+    given:
+      - input: source('jobs', 'raw_job_postings')
+        rows:
+          - {job_id: 1, job_salary: "100K–186K a year"}
+          - {job_id: 2, job_salary: "32.50 an hour"}
+          - {job_id: 3, job_salary: null}
+    expect:
+      rows:
+        - {job_id: 1, salary_min: 100000, salary_max: 186000, salary_currency: "USD", salary_period: "year"}
+        - {job_id: 2, salary_min: 32.5, salary_max: 32.5, salary_currency: "USD", salary_period: "hour"}
+        - {job_id: 3, salary_min: null, salary_max: null, salary_currency: null, salary_period: null}
+
+
+          
