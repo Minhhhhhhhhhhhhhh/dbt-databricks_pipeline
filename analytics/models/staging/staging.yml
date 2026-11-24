@@ -15,7 +15,17 @@ models:
       - name: job_posted_at
         description: "The date when the job was posted."
       - name: job_salary
-        description: "The salary or salary range listed for the job."
+        description: "The raw text salary or salary range listed for the job."
+      - name: salary_min
+        description: "The minimum salary listed for the job."
+      - name: salary_max
+        description: "The maximum salary listed for the job."
+      - name: salary_avg
+        description: "The average salary calculated from the minimum and maximum salary."
+      - name: salary_currency
+        description: "The currency in which the salary is listed."
+      - name: salary_period
+        description: "The period for which the salary is specified (e.g., per year, per month, per hour)."
       - name: job_schedule_type
         description: "The schedule type of the job, such as full-time or part-time."
       - name: job_work_from_home
